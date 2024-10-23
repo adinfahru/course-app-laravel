@@ -14,8 +14,7 @@
 
             <div class="px-4 py-2 -mx-3">
                 <div class="mx-3">
-                    <span class="font-semibold text-blue-500">Info</span>
-                    <p class="text-sm text-gray-600">Sample table page</p>
+                    <span class="font-semibold text-blue-500">Total User : {{ $users->total() }}</span>
                 </div>
             </div>
         </div>
