@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Order;
 
 class UserCourseController extends Controller
 {
@@ -20,8 +21,11 @@ class UserCourseController extends Controller
 
     public function purchasedCourses()
     {
-        $user = auth()->user(); // Get the currently authenticated user
-        $purchasedCourses = $user->purchasedCourses(); // Fetch purchased courses
+        // Fetch orders for the authenticated user with related courses
+        $orders = Order::where('user_id', auth()->id())->with('course')->get();
+
+        // Extract courses from orders
+        $purchasedCourses = $orders->pluck('course'); // This will give you a collection of courses
 
         return view('users.courses.purchased', compact('purchasedCourses'));
     }

@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\Order; // Ganti Orders menjadi Order
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function checkout(Course $course)
     {
+        $user = auth()->user();
+
+        // Check if the course exists
         if (!$course) {
             return redirect()->route('courses.index')->with('error', 'Course not found.');
         }
+
+        // Check if the user has already purchased the course
+        if ($user->purchasedCourses()->contains('id', $course->id)) {
+            return redirect()->route('courses.index')->with('error', 'You have already purchased this course.');
+        }
+
+        // Proceed to the checkout view if the course is not purchased
         return view('users.orders.checkout', compact('course'));
     }
 
@@ -36,7 +46,7 @@ class OrderController extends Controller
             'status' => 'completed',
         ]);
 
-        return redirect()->route('courses.index')->with('success', 'Purchase successful!');
+        return redirect()->route('purchased')->with('success', 'Purchase successful!');
     }
 
 

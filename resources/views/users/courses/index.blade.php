@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-8">
         @foreach($courses as $course)
-        <a href="{{ route('courses.show', $course->id) }}" class="relative block overflow-hidden rounded-lg border shadow-md border-gray-300 p-4 sm:p-6 lg:p-8 hover:bg-indigo-50">
+        <div class="relative block overflow-hidden rounded-lg border shadow-md border-gray-300 p-4 sm:p-6 lg:p-8 hover:bg-gray-100">
             <div class="sm:flex sm:justify-between sm:gap-4">
                 <div>
                     <h3 class="text-lg font-bold text-gray-900 sm:text-xl">{{ $course->title }}</h3>
@@ -25,7 +25,14 @@
                     <dd class="text-xs text-gray-500">${{ $course->price }}</dd>
                 </div>
             </dl>
-        </a>
+
+            <div class="mt-6 flex gap-4">
+                <form action="{{ route('checkout', $course->id) }}" method="GET">
+                    @csrf
+                    <button type="submit" class="inline-block px-4 py-1 rounded text-white bg-indigo-800 hover:bg-indigo-500">Buy Course</button>
+                </form>
+            </div>
+        </div>
         @endforeach
     </div>
 

@@ -12,11 +12,15 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all(); // ambil semua course
-        $categories = Category::all(); // ambil semua kategori
+        // Retrieve courses ordered by 'created_at' in descending order
+        $courses = Course::orderBy('created_at', 'desc')->paginate(10);
+        $categories = Category::all(); // Retrieve all categories
 
-        return view('admin.courses.index', compact('courses', 'categories'));
+        // Return the view with the data and success message
+        return view('admin.courses.index', compact('courses', 'categories'))
+            ->with('success', 'Course created successfully.');
     }
+
 
     public function create()
     {
