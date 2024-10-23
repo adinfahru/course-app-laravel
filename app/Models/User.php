@@ -18,6 +18,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class); // Ganti Orders menjadi Order
     }
 
+    public function purchasedCourses()
+    {
+        return Course::whereIn('id', $this->orders()->pluck('course_id'))->get();
+    }
+
     protected $fillable = [
         'name',
         'email',

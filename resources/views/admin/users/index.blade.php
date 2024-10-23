@@ -23,9 +23,10 @@
             <div class="overflow-x-auto w-full">
                 <table class="w-full whitespace-no-wrap">
                     <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase bg-gray-50 border-b">
+                    <tr class="text-xs font-semibold tracking-wide text-left text-white bg-indigo-800 border-b">
                         <th class="px-4 py-3">Name</th>
                         <th class="px-4 py-3">Email</th>
+                        <th class="px-4 py-3">Role</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y">
@@ -36,6 +37,9 @@
                             </td>
                             <td class="px-4 py-3 text-sm">
                                 {{ $user->email }}
+                            </td>
+                            <td class="px-4 py-3 text-sm capitalize">
+                                {{ $user->role }}
                             </td>
                         </tr>
                     @endforeach

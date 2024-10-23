@@ -5,7 +5,7 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MyCourse</span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <a class="block w-full rounded bg-indigo-500 px-12 py-3 text-sm font-bold text-white shadow hover:bg-indigo-700 focus:outline-none focus:ring sm:w-auto"
+            <a class="block w-full rounded bg-white px-12 py-3 text-sm font-bold text-indigo-800 shadow hover:bg-gray-200 focus:outline-none focus:ring sm:w-auto"
                 href="{{route('login')}}">
                 Login
             </a>

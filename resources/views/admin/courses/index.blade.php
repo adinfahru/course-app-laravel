@@ -13,7 +13,7 @@
             <div class="w-full overflow-x-auto shadow-xs">
                 <table class="w-full whitespace-no-wrap">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 bg-gray-200 uppercase border">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white bg-indigo-800 border">
                             <th class="px-4 py-3">Title</th>
                             <th class="px-4 py-3">Category</th>
                             <th class="px-4 py-3">Author</th>

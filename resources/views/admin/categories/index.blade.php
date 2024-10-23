@@ -11,12 +11,12 @@
             <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
                     <thead>
-                        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 bg-gray-200 uppercase border">
+                        <tr class="text-xs font-semibold tracking-wide text-left text-white bg-indigo-800 border">
                             <th class="px-4 py-3">Category Name</th>
                             <th class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y">
+                    <tbody class="bg-white divide-y text-sm">
                         @forelse ($categories as $category)
                         <tr class="text-gray-700">
                             <td class="px-4 py-3">{{ $category->category_name }}</td>

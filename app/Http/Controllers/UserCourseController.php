@@ -17,4 +17,12 @@ class UserCourseController extends Controller
         $course = Course::findOrFail($id);
         return view('users.courses.show', compact('course'));
     }
+
+    public function purchasedCourses()
+    {
+        $user = auth()->user(); // Get the currently authenticated user
+        $purchasedCourses = $user->purchasedCourses(); // Fetch purchased courses
+
+        return view('users.courses.purchased', compact('purchasedCourses'));
+    }
 }

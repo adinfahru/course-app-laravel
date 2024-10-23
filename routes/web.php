@@ -53,6 +53,8 @@ Route::middleware(['auth', 'user'])->group(function () {
     
     Route::view('about', 'about')->name('about');
 
+    Route::get('/user/courses/purchased', [UserCourseController::class, 'purchasedCourses'])->name('purchased');
+
 });
 
 require __DIR__ . '/auth.php';
