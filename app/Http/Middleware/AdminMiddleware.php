@@ -14,7 +14,7 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect('/'); // Redirect ke halaman yang diinginkan jika bukan admin
+        return redirect('courses'); // Redirect ke halaman yang diinginkan jika bukan admin
     }
 }
 

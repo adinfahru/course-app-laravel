@@ -10,7 +10,7 @@
 
         @can('user')
 
-        <div class="gap-4 items-center flex mr-10">
+        <div class="gap-4 items-center flex mr-5">
             <ul class="relative">
                 <x-nav-link href="{{ route('courses.index') }}" :active="request()->routeIs('courses.index')">
                     {{ __('Course') }}

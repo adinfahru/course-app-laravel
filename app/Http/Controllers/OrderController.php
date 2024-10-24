@@ -17,14 +17,18 @@ class OrderController extends Controller
             return redirect()->route('courses.index')->with('error', 'Course not found.');
         }
 
+        // Fetch orders for the authenticated user with related courses
+        $purchasedCourses = Order::where('user_id', $user->id)->with('course')->get()->pluck('course')->unique('id');
+
         // Check if the user has already purchased the course
-        if ($user->purchasedCourses()->contains('id', $course->id)) {
+        if ($purchasedCourses->contains('id', $course->id)) {
             return redirect()->route('courses.index')->with('error', 'You have already purchased this course.');
         }
 
         // Proceed to the checkout view if the course is not purchased
         return view('users.orders.checkout', compact('course'));
     }
+
 
     public function purchase(Request $request)
     {

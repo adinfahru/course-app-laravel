@@ -7,6 +7,7 @@
         <p class="text-center text-gray-500">You have not purchased any courses yet.</p>
         @else
         @foreach($purchasedCourses as $course)
+        @if($course)
         <a href="{{ route('courses.show', $course->id) }}" class="relative block overflow-hidden rounded-lg border shadow-md border-gray-300 p-4 sm:p-6 lg:p-8 hover:bg-indigo-50">
             <div class="sm:flex sm:justify-between sm:gap-4">
                 <div>
@@ -32,6 +33,8 @@
                 </div>
             </dl>
         </a>
+        @else
+        @endif
         @endforeach
         @endif
     </div>

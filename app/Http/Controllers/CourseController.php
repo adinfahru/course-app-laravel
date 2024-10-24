@@ -38,6 +38,7 @@ class CourseController extends Controller
             'price' => 'required|numeric|min:0',
             'author' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'video' => 'required|string|url|max:255',
         ]);
 
         $data = $request->all();
@@ -68,6 +69,7 @@ class CourseController extends Controller
             'price' => 'required|numeric|min:0',
             'author' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'video' => 'required|string|url|max:255',
         ]);
 
         $data = $request->all();

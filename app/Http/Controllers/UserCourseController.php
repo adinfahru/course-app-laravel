@@ -15,7 +15,16 @@ class UserCourseController extends Controller
 
     public function show($id)
     {
-        $course = Course::findOrFail($id);
+        // Attempt to find the course by ID
+        $course = Course::find($id);
+
+        // Check if the course exists
+        if (!$course) {
+            // Handle the case where the course is not found
+            return redirect()->route('courses.index')->with('error', 'Course not found.');
+        }
+
+        // If the course exists, return the view
         return view('users.courses.show', compact('course'));
     }
 
@@ -24,8 +33,8 @@ class UserCourseController extends Controller
         // Fetch orders for the authenticated user with related courses
         $orders = Order::where('user_id', auth()->id())->with('course')->get();
 
-        // Extract courses from orders
-        $purchasedCourses = $orders->pluck('course'); // This will give you a collection of courses
+        // Extract unique courses from orders
+        $purchasedCourses = $orders->pluck('course')->unique(); // This will give you a collection of unique courses
 
         return view('users.courses.purchased', compact('purchasedCourses'));
     }

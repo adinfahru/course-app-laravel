@@ -16,6 +16,8 @@ class Course extends Model
         'price',
         'author',
         'image',
+        'video',
+
     ];
 
     public function category()

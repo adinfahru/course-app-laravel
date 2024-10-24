@@ -7,7 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderHistoryController;
 
 
 Route::get('/', function () {
@@ -37,6 +37,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('admin/categories', CategoryController::class);
     Route::resource('categories', CategoryController::class);
+
+    Route::get('admin/history', [OrderHistoryController::class, 'index'])->name('history.index');
 });
 
 
