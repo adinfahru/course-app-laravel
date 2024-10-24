@@ -57,7 +57,7 @@
             </li>
             @endcan
 
-            @can('user')
+            <!-- @can('user')
             <li class="relative px-6 py-3">
                 <x-nav-link href="{{ route('courses.index') }}" :active="request()->routeIs('courses.index')">
                     <x-slot name="icon">
@@ -93,8 +93,7 @@
                     {{ __('History') }}
                 </x-nav-link>
             </li>
-            
-            @endcan
+            @endcan -->
 
         </ul>
     </div>
