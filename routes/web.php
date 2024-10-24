@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderHistoryController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', function () {
@@ -35,10 +36,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/admin/courses/{course}', [CourseController::class, 'destroy'])->name('admin.courses.destroy');
     Route::post('/admin/courses/store', [CourseController::class, 'store'])->name('admin.courses.store');
 
-    Route::resource('admin/categories', CategoryController::class);
-    Route::resource('categories', CategoryController::class);
+    Route::resource('/admin/categories', CategoryController::class);
+    Route::resource('/admin/dashboard', DashboardController::class);
 
-    Route::get('admin/history', [OrderHistoryController::class, 'index'])->name('history.index');
+    Route::get('/admin/history', [OrderHistoryController::class, 'index'])->name('history.index');
 });
 
 
