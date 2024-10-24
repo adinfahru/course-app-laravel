@@ -34,6 +34,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'course_id' => 'required|exists:courses,id',
+            'donation' => 'nullable|numeric|min:0', // Validasi untuk donasi
         ]);
 
         $user = auth()->user();
@@ -43,15 +44,20 @@ class OrderController extends Controller
             return redirect()->back()->with('error', 'Course not found.');
         }
 
+        // Ambil nilai donasi, jika ada
+        $donation = $request->input('donation', 0); // Default ke 0 jika tidak ada
+
         $order = Order::create([
             'user_id' => $user->id,
             'course_id' => $course->id,
-            'amount' => $course->price,
+            'amount' => $course->price, // Simpan harga asli kursus
+            'donation' => $donation, // Simpan donasi (jika Anda menambah kolom ini di tabel)
             'status' => 'completed',
         ]);
 
         return redirect()->route('purchased')->with('success', 'Purchase successful!');
     }
+
 
 
     public function history()

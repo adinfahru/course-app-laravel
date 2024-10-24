@@ -1,8 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        {{ __('Order History') }}
-    </x-slot>
-
     <div class="p-4 bg-white rounded-lg shadow-xs">
 
         <div class="inline-flex overflow-hidden mb-4 w-full bg-white rounded-lg shadow-md">
@@ -27,6 +23,8 @@
                             <th class="px-4 py-3">Name</th>
                             <th class="px-4 py-3">Course Name</th>
                             <th class="px-4 py-3">Amount</th>
+                            <th class="px-4 py-3">Donation</th>
+                            <th class="px-4 py-3">Total</th>
                             <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Date</th>
                         </tr>
@@ -42,6 +40,12 @@
                             </td>
                             <td class="px-4 py-3 text-sm">
                                 ${{ number_format($order->amount, 2) }}
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                ${{ number_format($order->donation, 2) }}
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                ${{ number_format($order->amount + $order->donation, 2) }} <!-- Corrected total calculation -->
                             </td>
                             <td class="px-4 py-3 text-sm capitalize">
                                 {{ $order->status }}

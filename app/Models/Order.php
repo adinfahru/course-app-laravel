@@ -13,6 +13,7 @@ class Order extends Model // Ubah dari Orders menjadi Order
         'user_id',
         'course_id',
         'amount',
+        'donation',
         'status',
     ];
 
