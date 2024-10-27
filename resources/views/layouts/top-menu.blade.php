@@ -34,7 +34,9 @@
 
         <x-dropdown>
             <x-slot name="trigger">
-                <button class="align-middle rounded-full focus:shadow-outline-purple focus:outline-none" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
+                <button class="text-sm font-bold mb-1 ml-5
+                
+                text-indigo-800 align-middle rounded-md focus:shadow-outline-purple focus:outline-none" @click="toggleProfileMenu" @keydown.escape="closeProfileMenu" aria-label="Account" aria-haspopup="true">
                     {{ Auth::user()->name }}
                 </button>
             </x-slot>
